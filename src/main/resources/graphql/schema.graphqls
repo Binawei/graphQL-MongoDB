@@ -1,0 +1,33 @@
+type Query {
+  userById(id: ID!): User
+  users: [User]
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User
+  loginUser(input: LoginUserInput!): AuthPayload
+}
+
+type User {
+  id: ID
+  username: String
+  email: String
+  phoneNumber: String
+}
+
+input RegisterDTO {
+  username: String!
+  email: String!
+  password: String!
+  phoneNumber: String
+}
+
+input LoginDTO {
+  email: String!
+  password: String!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
