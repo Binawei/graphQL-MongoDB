@@ -1,17 +1,19 @@
+#application queries
 type Query {
   userById(id: ID!): User
   users: [User]
 }
 
 type Mutation {
-  createUser(input: CreateUserInput!): User
-  loginUser(input: LoginUserInput!): AuthPayload
+  createUser(input: RegisterDTO!): User
+  loginUser(input: LoginDTO!): AuthPayload
 }
 
 type User {
   id: ID
   username: String
   email: String
+  password: String
   phoneNumber: String
 }
 
@@ -29,5 +31,6 @@ input LoginDTO {
 
 type AuthPayload {
   token: String
-  user: User
+  username: String
+  email: String
 }
